@@ -1,0 +1,16 @@
+PROJECT TITLE:
+Mini Shell – Operating System Project
+
+PROJECT DESCRIPTION:
+The Mini Shell project is a simple command-line interface that demonstrates
+basic operating system concepts. It allows users to enter commands and
+interact with the system through a shell. The project focuses on understanding
+process creation, command execution, system calls, and basic shell operations.
+
+EXPECTED OUTCOMES:
+1. Develop a basic working mini shell.
+2. Execute basic commands entered by the user.
+3. Understand process creation and process management.
+4. Learn how system calls are used in operating systems.
+5. Implement basic command parsing and execution.
+6. Gain practical knowledge of Linux/Operating System concepts.
