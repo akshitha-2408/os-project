@@ -4,11 +4,14 @@
 #include "parser.h"
 #include "process.h"
 #include "builtin.h"
+#include "signals.h"
 
 int main()
 {
     char input[1024];
     char *args[MAX_ARGS];
+
+    initialize_signals();
 
     while (1)
     {
@@ -38,3 +41,4 @@ int main()
 
     return 0;
 }
+
