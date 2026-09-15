@@ -3,6 +3,7 @@
 #include "input.h"
 #include "parser.h"
 #include "process.h"
+#include "builtin.h"
 
 int main()
 {
@@ -20,18 +21,17 @@ int main()
 
         input[strcspn(input, "\n")] = '\0';
 
-        if (strcmp(input, "exit") == 0)
-        {
-            printf("Goodbye!\n");
-            break;
-        }
-
         if (strlen(input) == 0)
         {
             continue;
         }
 
         parse_input(input, args);
+
+        if (handle_builtin(args))
+        {
+            continue;
+        }
 
         execute_command(args);
     }
