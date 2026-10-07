@@ -5,7 +5,7 @@
 #include <limits.h>
 
 #include "builtin.h"
-
+#include "thread.h"
 
 int handle_builtin(char **args)
 {
@@ -14,9 +14,7 @@ int handle_builtin(char **args)
         return 1;
     }
 
-
     /* cd */
-
     if (strcmp(args[0], "cd") == 0)
     {
         if (args[1] == NULL)
@@ -31,9 +29,7 @@ int handle_builtin(char **args)
         return 1;
     }
 
-
     /* pwd */
-
     if (strcmp(args[0], "pwd") == 0)
     {
         char cwd[PATH_MAX];
@@ -50,9 +46,7 @@ int handle_builtin(char **args)
         return 1;
     }
 
-
     /* help */
-
     if (strcmp(args[0], "help") == 0)
     {
         printf("\nShellForge Built-in Commands:\n");
@@ -64,77 +58,65 @@ int handle_builtin(char **args)
         printf("  run              Run ShellForge\n");
         printf("  clean            Clean build files\n");
         printf("  gitstatus        Show Git status\n");
+        printf("  threadtest       Test thread synchronization\n");
         printf("  exit             Exit ShellForge\n\n");
 
         return 1;
     }
 
-
     /* clear */
-
     if (strcmp(args[0], "clear") == 0)
     {
         printf("\033[H\033[J");
         return 1;
     }
 
-
     /* build */
-
     if (strcmp(args[0], "build") == 0)
     {
         printf("Building ShellForge...\n");
-
         system("make");
-
         return 1;
     }
 
-
     /* run */
-
     if (strcmp(args[0], "run") == 0)
     {
         printf("Starting ShellForge...\n");
-
         system("./bin/shellforge");
-
         return 1;
     }
 
-
     /* clean */
-
     if (strcmp(args[0], "clean") == 0)
     {
         printf("Cleaning build files...\n");
-
         system("make clean");
-
         return 1;
     }
 
-
     /* gitstatus */
-
     if (strcmp(args[0], "gitstatus") == 0)
     {
         printf("Git Status:\n");
-
         system("git status --short");
-
         return 1;
     }
 
+    /* thread synchronization test */
+    if (strcmp(args[0], "threadtest") == 0)
+    {
+        printf("Running thread synchronization test...\n");
+        run_thread_demo();
+        return 1;
+    }
 
     /* exit */
-
     if (strcmp(args[0], "exit") == 0)
     {
         printf("Goodbye!\n");
         exit(0);
     }
-
 
     return 0;
 }
